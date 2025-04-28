@@ -1,4 +1,5 @@
 <ProposeSolution>
+
   1. Dont write any code.
   2. Clearly Define the Problem/Feature.
   3. List specific, verifiable assumptions.
