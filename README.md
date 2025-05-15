@@ -1,10 +1,15 @@
+---
+description: Overview of Roo AI Assistant configuration, tools, and project structure
+alwaysApply: false
+---
+
 # Roo AI Assistant Configuration & Tools
 
 This repository contains the configuration files, guidelines, and tool descriptions for the Roo AI assistant, designed to aid in various software development tasks within the Cline environment.
 
 ## Project Structure
 
-- **Root Directory:** Contains general guidelines, principles, and configuration files (like `.clinerules`) that define the assistant's behavior and operational context.
+- Root Directory: Contains general guidelines, principles, and configuration files (like `.clinerules`) that define the assistant's behavior and operational context.
   - `coding_principles.md`: Guidelines for code generation.
   - `documentation.md`: Standards for documentation.
   - `git_usage.md`: Best practices for Git usage.
@@ -15,10 +20,10 @@ This repository contains the configuration files, guidelines, and tool descripti
   - `thinking_principles.md`: Guidelines for the AI's thought process.
   - `.clinerules`: Specific rules for the Cline environment, potentially defining custom tool behaviors.
 
-- **`tools/` Directory:** Contains detailed descriptions and instructions for specific tools and workflows available to the assistant.
+- `tools/` Directory: Contains detailed descriptions and instructions for specific tools and workflows available to the assistant.
   - `README.md`: Overview of the tools directory.
   - Individual `.md` files (e.g., `debug_error.md`, `generate_commit.md`, `propose_solution.md`, `retrospective.md`): Define specific capabilities like debugging, commit message generation, solution proposal, and conducting retrospectives.
-  - **`tools/tdd/` Subdirectory:** Contains resources specifically for Test-Driven Development workflows, including BDD scenario generation, unit test generation, and phase-specific guidelines.
+  - `tools/tdd/` Subdirectory: Contains resources specifically for Test-Driven Development workflows, including BDD scenario generation, unit test generation, and phase-specific guidelines.
 
 ## Key Features
 

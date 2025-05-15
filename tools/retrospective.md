@@ -1,3 +1,8 @@
+---
+description: Tool for conducting project retrospectives and continuous improvement analysis
+alwaysApply: false
+---
+
 <Retrospective>
 Get all the logs and commit message from this project in an effcient manner (we want rich history of this project). 
 

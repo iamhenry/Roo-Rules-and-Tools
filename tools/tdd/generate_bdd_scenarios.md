@@ -1,3 +1,8 @@
+---
+description: Tool for generating Behavior-Driven Development test scenarios
+alwaysApply: false
+---
+
 <GenerateBDDTestScenarios>
 When generating files, use the following format: `bdd-[filename].md`
 Description: Write Behavior-Driven Development (BDD) requirements in the Given-When-Then format for this feature:

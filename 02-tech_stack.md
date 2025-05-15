@@ -1,3 +1,8 @@
+---
+description: Lists the project's frontend, backend, and development technologies
+alwaysApply: true
+---
+
 # Tech Stack
 ==========================
 ### Frontend

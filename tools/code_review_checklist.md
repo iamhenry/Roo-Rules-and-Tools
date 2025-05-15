@@ -1,3 +1,8 @@
+---
+description: Comprehensive checklist for performing thorough code reviews
+alwaysApply: false
+---
+
 <CodeReviewChecklist>
 
 ## Pre-steps

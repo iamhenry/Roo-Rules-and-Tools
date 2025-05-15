@@ -1,3 +1,8 @@
+---
+description: Tool for assessing task modularity, simplicity, and code reusability
+alwaysApply: false
+---
+
 <EvaluateTaskModularity>
 Description: Assess coding tasks for modularity, simplicity, and reusability.
 Inputs: 

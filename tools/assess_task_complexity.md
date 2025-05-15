@@ -1,3 +1,8 @@
+---
+description: Tool for evaluating task complexity, risk, and determining thinking approach
+alwaysApply: false
+---
+
 <AssessTaskComplexity>
 Description: Evaluate coding tasks for complexity, risk, and time sensitivity.
 Inputs:

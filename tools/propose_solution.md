@@ -1,3 +1,8 @@
+---
+description: Structured approach for proposing, comparing, and selecting software solutions
+alwaysApply: false
+---
+
 <ProposeSolution>
 
   1. Dont write any code.

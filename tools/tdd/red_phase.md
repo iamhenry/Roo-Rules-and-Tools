@@ -1,4 +1,10 @@
+---
+description: Guidelines for implementing the "Red" phase of Test-Driven Development
+alwaysApply: false
+---
+
 <tdd-red-phase>
+
 ### Pre-requisites  
 Before writing tests, ensure the necessary test infrastructure exists:  
 
@@ -41,7 +47,7 @@ Before writing tests, ensure the necessary test infrastructure exists:
 - Use `apply_diff` to update existing test files (`.test.(js|tsx|ts)`).  
 
 ### 5. Verify Failure  
-- Verify Test Failure for the Right Reason: Ensure tests fail because the functionality isn’t implemented (e.g., assertion fails), not due to setup errors or unexpected runtime issues (e.g., "undefined is not a function"). Define placeholders (e.g., empty functions) if needed to prevent unrelated failures.  
+- Verify Test Failure for the Right Reason: Ensure tests fail because the functionality isn't implemented (e.g., assertion fails), not due to setup errors or unexpected runtime issues (e.g., "undefined is not a function"). Define placeholders (e.g., empty functions) if needed to prevent unrelated failures.  
 - Run tests using `execute_command` to confirm they fail correctly.  
 
 ---

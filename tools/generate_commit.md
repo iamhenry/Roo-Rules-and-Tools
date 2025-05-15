@@ -1,3 +1,8 @@
+---
+description: Tool for generating standardized Git commit messages with proper format and context
+alwaysApply: false
+---
+
 <GenerateCommit>
 ## Automating Git Commits for AI-Generated Codebases
 

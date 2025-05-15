@@ -1,3 +1,8 @@
+---
+description: Defines Git commit message format, types, and scope conventions
+alwaysApply: true
+---
+
 # Git Usage
 ==========================
 IMPORTANT: Use concise but context-rich messages. Start with a brief summary of the changes followed by a bulleted list of each change.

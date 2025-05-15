@@ -1,3 +1,8 @@
+---
+description: List of special commands and shortcuts for AI assistant functionality
+alwaysApply: false
+---
+
 # Commands
 ==========================
 IMPORTANT: For the command used, reply with a written confirmation.

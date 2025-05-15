@@ -1,3 +1,8 @@
+---
+description: Comprehensive tool for generating TDD-oriented unit tests with proper structure
+alwaysApply: false
+---
+
 <GenerateUnitTests>
 Objective: 
   Use TDD principles to create behavior-focused, maintainable tests with proper separation of concerns.

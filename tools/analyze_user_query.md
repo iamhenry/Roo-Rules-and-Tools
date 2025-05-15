@@ -1,3 +1,8 @@
+---
+description: Tool for evaluating and clarifying ambiguous user queries
+alwaysApply: false
+---
+
 <AnalyzeUserQuery>
 Description: Evaluate and clarify ambiguous user queries.
 Inputs: 

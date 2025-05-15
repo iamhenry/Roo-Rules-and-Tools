@@ -1,3 +1,8 @@
+---
+description: Outlines code quality principles including YAGNI, DRY, KISS, and modularity guidelines
+alwaysApply: true
+---
+
 # Coding Principles
 ==========================
 - YAGNI (You Aren't Gonna Need It)

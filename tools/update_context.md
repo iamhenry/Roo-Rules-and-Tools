@@ -1,3 +1,8 @@
+---
+description: Tool for updating context bank with recent Git changes and explanations
+alwaysApply: false
+---
+
 <UpdateContext>
   1. run a git command to get the recent changes (`git log main..HEAD --pretty=format:"%h | %ad | %s%n%b" --date=format:"%I:%M %p %b %d, %Y"`)
   2. Include the changes but also explain why we made those decisions
