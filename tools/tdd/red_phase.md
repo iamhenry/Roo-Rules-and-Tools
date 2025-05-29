@@ -6,9 +6,14 @@ alwaysApply: false
 <tdd-red-phase>
 
 ### Restrictions
-
 - This phase cannot modify any other file and is limited to creating and editing test files only.  
-- Ensures only test files are modified `^(?!.*\.(?!test\.|spec\.).*$).*$` 
+- Ensures only test files are modified `^(?!.\.(?!test\.|spec\.).$).$` 
+
+### Guidelines
+- ALL tests must fail - no exceptions
+- After writing tests, verify that 100% of tests fail
+- Mock external dependencies (e.g., APIs, databases) to isolate the unit under test.
+- Use values that guarantee test failure (e.g., undefined, null, invalid types)
 
 ### Pre-requisites  
 Before writing tests, ensure the necessary test infrastructure exists:  
@@ -48,11 +53,12 @@ Before writing tests, ensure the necessary test infrastructure exists:
 ### 2. Set Up Test Infrastructure  
 - Create minimal stubs that enable test execution but contain NO business logic
 - Stubs should return default/empty values that cause behavioral test failures
-- **Examples of acceptable stubs:**
+  Use values guaranteed to fail all tests
+- Examples of acceptable stubs:
   - Empty functions: `async () => {}`
   - Default values: `false`, `undefined`, `[]`
   - Basic structure: interfaces, types, context providers
-- **Examples of unacceptable stubs:**
+- Examples of unacceptable stubs:
   - Error handling logic
   - Validation logic  
   - State management
