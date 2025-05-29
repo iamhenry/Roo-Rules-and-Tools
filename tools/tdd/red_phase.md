@@ -5,84 +5,164 @@ alwaysApply: false
 
 <tdd-red-phase>
 
+### Restrictions
+
+- This phase cannot modify any other file and is limited to creating and editing test files only.  
+- Ensures only test files are modified `^(?!.*\.(?!test\.|spec\.).*$).*$` 
+
 ### Pre-requisites  
 Before writing tests, ensure the necessary test infrastructure exists:  
 
-1. Check for existing components:  
-   - Test utilities and helpers  
-   - Mock implementations  
-   - Data builders/factories  
-   - Shared fixtures  
+1. First, locate and read ALL relevant BDD scenarios
+   - Extract required components/modules and their relationships
+   - Note expected behaviors and outcomes
+   - Review implementation notes
+   - List all acceptance criteria
 
-2. Create missing components if needed:  
-   - TestHelpers/ → Shared utilities  
-   - Mocks/ → Test doubles  
-   - Fixtures/ → Shared test data  
-   - Builders/ → Data construction  
+2. Check for existing test infrastructure:  
+   - [ ] Test utilities and helpers
+   - [ ] Mock implementations
+   - [ ] Test data generators
+   - [ ] Shared test fixtures
+   - [ ] Test configuration
+
+3. Create missing infrastructure if needed (respect platform best practice structure):  
+   ```
+   tests/
+   ├── helpers/        # Test utilities
+   ├── mocks/         # Test doubles
+   ├── fixtures/      # Test data
+   ├── factories/     # Data generators
+   └── config/        # Test configuration
+   ```
 
 ---
 
 ## Red Phase Workflow  
 
-### 1. Analyze Gherkin Scenarios  
-- Identify key behaviors to test (e.g., "When X happens, Then Y occurs").  
+### 1. Analyze BDD Scenarios  
+- Map each scenario to testable behaviors
+- Identify state changes and outputs
+- Note required test setup for each scenario
 
-### 2. Set Up Minimal Test Infrastructure  
-- Add mocks, fixtures, and helpers only as needed for the behavior being tested.  
-- Ensure Proper Setup and Isolation: Use minimal dependencies, mocking only components directly impacting the behavior. Keep tests independent with fresh instances of objects or state each time.  
+### 2. Set Up Test Infrastructure  
+- Create minimal mocks/stubs needed for current behavior
+- Set up proper isolation:
+  - Fresh test state for each test
+  - Isolated dependencies
+  - Clear test boundaries
+- Example mock pattern (pseudocode):
+  ```
+  // Language-agnostic mock pattern
+  Mock ServiceInterface:
+    - Define expected inputs
+    - Define expected outputs
+    - Add verification methods
+  ```
 
-### 3. Write Unit Tests with Guard Rails  
-- Focus on observable behavior, not implementation details.  
-- Use Dynamic, Flexible Assertions: Base assertions on expected behavior, avoiding hardcoded values. Calculate results dynamically (e.g., using formulas or relative values) rather than assuming fixed outputs.  
-- Avoid over-specification unless critical.  
-- Use dependency injection and interfaces for dependencies.  
-- Use descriptive names → `test[Scenario]_[Condition]_[ExpectedResult]`.  
-- Test one behavior per test, avoiding multiple unrelated assertions.  
-- Ensure tests are isolated with no shared state.  
-- Keep setup minimal and relevant.  
-- Handle Asynchronous Behavior: Account for delays or side effects by waiting for async operations to complete (e.g., using `waitFor` or similar tools) before asserting results.  
+### 3. Write Tests with Guard Rails  
+- Focus on behavior over implementation
+- Use dynamic assertions:
+  ```
+  // Instead of:
+  assert result equals "fixed value"
+  
+  // Prefer:
+  assert result matches expected pattern
+  assert result contains required properties
+  assert system transitions to expected state
+  ```
+- Follow naming convention: `test_[Scenario]_[Condition]_[ExpectedResult]`
+- One behavior per test
+- Maintain test isolation
+- Handle async operations appropriately for your platform
 
-### 4. File Handling  
-- Use `write_to_file` for new test files.  
-- Use `apply_diff` to update existing test files (`.test.(js|tsx|ts)`).  
+### 4. Test Organization
+- Group tests by behavior/scenario
+- Maintain consistent structure:
+  ```
+  test_suite:
+    setup/fixtures
+    test_cases:
+      setup
+      action
+      verification
+    cleanup
+  ```
 
 ### 5. Verify Failure  
-- Verify Test Failure for the Right Reason: Ensure tests fail because the functionality isn't implemented (e.g., assertion fails), not due to setup errors or unexpected runtime issues (e.g., "undefined is not a function"). Define placeholders (e.g., empty functions) if needed to prevent unrelated failures.  
-- Run tests using `execute_command` to confirm they fail correctly.  
+- Tests should fail due to missing implementation
+- Not due to:
+  - Setup errors
+  - Configuration issues
+  - Missing dependencies
+  - Invalid test structure
 
 ---
 
-## 6. Evaluate Tests with Guard Rails Checklist  
+## 6. Evaluate Tests with Guard Rails  
 
 ### Scoring System  
 Start at 100 points, deduct for violations:  
 
-#### Maintainability  
-- Tests target behavior (Critical, -30)  
-- No over-specification (Moderate, -15)  
-- Dependencies use interfaces (Moderate, -15)  
-- Dynamic assertions used (Moderate, -15)  
+#### Maintainability (-60)  
+- Tests verify behavior not implementation (-30)
+- No over-specification (-15)
+- Uses proper abstractions (-15)
 
-#### Clarity  
-- Descriptive names (Moderate, -15)  
-- One behavior per test (Moderate, -15)  
+#### Clarity (-30)  
+- Clear test names and structure (-15)
+- Single behavior per test (-15)
 
-#### Isolation  
-- Isolated tests (Critical, -30)  
-- Minimal setup (Minor, -5)  
-- Proper async handling (Moderate, -15)  
+#### Isolation (-40)  
+- Tests are independent (-30)
+- Minimal test setup (-5)
+- Proper async/concurrent handling (-5)
 
-### Reporting  
-Provide a score breakdown for each category and overall (e.g., "Maintainability: 85").  
-Use severity indicators:  
-- 🟢 (90-100)  
-- 🟡 (70-89)  
-- 🔴 (<70)  
+### Quality Indicators  
+🟢 Excellent (90-100):
+- Tests are reliable and maintainable
+- Clear behavior verification
+- Proper isolation
 
-List violations with severity and deduction (e.g., "Over-specification (-15)").  
+🟡 Needs Improvement (70-89):
+- Some technical debt
+- Minor clarity issues
+- Potential isolation problems
+
+🔴 Requires Revision (<70):
+- Significant reliability issues
+- Unclear test purpose
+- Poor isolation
+
+### Common Pitfalls
+❌ Avoid:
+- Testing implementation details
+- Shared test state
+- Complex test setup
+- Brittle assertions
+
+✅ Prefer:
+- Behavior-focused tests
+- Independent test cases
+- Minimal, clear setup
+- Robust assertions
 
 ---
 
 ### 7. Complete the Red Phase  
+- Verify all tests fail for the correct reasons
+- Ensure tests meet quality standards
+- Document any assumptions or requirements
+- Ready for implementation phase
 - Use `attempt_completion` to finalize the Red phase only when tests fail for the right reasons and meet guardrail standards, reducing the need for back-and-forth revisions.
+
+
+### Progress Checklist
+- [ ] BDD analysis complete
+- [ ] Infrastructure ready
+- [ ] Tests written
+- [ ] Tests failing correctly
+- [ ] Quality standards met
+
 </tdd-red-phase>
