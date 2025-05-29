@@ -9,7 +9,7 @@ alwaysApply: false
 - This phase cannot modify any other file and is limited to creating and editing test files only.  
 - Ensures only test files are modified `^(?!.\.(?!test\.|spec\.).$).$` 
 
-### Guidelines
+### Critiacal Guidelines
 - ALL tests must fail - no exceptions
 - After writing tests, verify that 100% of tests fail
 - Mock external dependencies (e.g., APIs, databases) to isolate the unit under test.
