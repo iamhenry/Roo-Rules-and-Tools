@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Git Usage
 ==========================
-IMPORTANT: Use concise but context-rich messages. Start with a brief summary of the changes followed by a bulleted list of each change.
+IMPORTANT: Use concise but context-rich messages. Group related changes. Start with a brief summary of the changes followed by a bulleted list of each change.
 Use the following prefixes for commit messages:
 
 ## Format
