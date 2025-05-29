@@ -46,19 +46,17 @@ Before writing tests, ensure the necessary test infrastructure exists:
 - Note required test setup for each scenario
 
 ### 2. Set Up Test Infrastructure  
-- Create minimal mocks/stubs needed for current behavior
-- Set up proper isolation:
-  - Fresh test state for each test
-  - Isolated dependencies
-  - Clear test boundaries
-- Example mock pattern (pseudocode):
-  ```
-  // Language-agnostic mock pattern
-  Mock ServiceInterface:
-    - Define expected inputs
-    - Define expected outputs
-    - Add verification methods
-  ```
+- Create minimal stubs that enable test execution but contain NO business logic
+- Stubs should return default/empty values that cause behavioral test failures
+- **Examples of acceptable stubs:**
+  - Empty functions: `async () => {}`
+  - Default values: `false`, `undefined`, `[]`
+  - Basic structure: interfaces, types, context providers
+- **Examples of unacceptable stubs:**
+  - Error handling logic
+  - Validation logic  
+  - State management
+  - Any logic that would make tests pass
 
 ### 3. Write Tests with Guard Rails  
 - Focus on behavior over implementation
@@ -92,6 +90,8 @@ Before writing tests, ensure the necessary test infrastructure exists:
 
 ### 5. Verify Failure  
 - Tests should fail due to missing implementation
+- ALL tests must fail - no exceptions
+- Tests should fail due to missing implementation (business logic)
 - Not due to:
   - Setup errors
   - Configuration issues
