@@ -7,7 +7,20 @@ alwaysApply: false
 
 ### Restrictions
 - This phase cannot modify any other file and is limited to creating and editing test files only.  
-- Ensures only test files are modified `^(?!.\.(?!test\.|spec\.).$).$` 
+- Ensures only test files are modified `^(?!.\.(?!test\.|spec\.).$).$`
+
+### High Level Flow
+```mermaid
+flowchart TD
+    A[Analyze BDD Scenarios] --> B{Check Test Infrastructure}
+    B -->|Missing| C[Create Test Infrastructure]
+    B -->|Exists| D[Write Failing Tests]
+    C --> D[Write Failing Tests]
+    D --> E[Verify All Tests Fail]
+    E --> F{Quality Check}
+    F -->|Pass| G[Complete Red Phase]
+    F -->|Fail| D
+```
 
 ### Critiacal Guidelines
 - ALL tests must fail - no exceptions
