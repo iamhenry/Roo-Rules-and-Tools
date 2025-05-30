@@ -32,7 +32,11 @@ flowchart TD
 - Mock external dependencies (e.g., APIs, databases, system services) to isolate the unit under test.
 - Use realistic data structures in mocks and SUT stubs that cause behavioral failures, not undefined/null returns where a structure is expected (or equivalent nil/empty optionals in typed languages).
 
-### Pre-requisites
+---
+
+## Red Phase Workflow
+
+### 0. Pre-requisites
 Before writing tests, ensure the necessary test and SUT infrastructure exists:
 
 1.  First, locate and read ALL relevant BDD scenarios:
@@ -78,9 +82,6 @@ Before writing tests, ensure the necessary test and SUT infrastructure exists:
             └── factories/user.factory.ts
         ```
 
----
-
-## Red Phase Workflow
 
 ### 1. Analyze BDD Scenarios
 - Map each scenario to one or more testable behaviors for the SUT.
