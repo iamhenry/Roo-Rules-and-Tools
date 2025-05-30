@@ -58,7 +58,7 @@ Before writing tests, ensure the necessary test and SUT infrastructure exists:
         - Type aliases/type definitions.
         - Empty function signatures (e.g., `export function processOrder(order: Order): ProcessedOrder { throw new Error('Not implemented'); }`, `func processOrder(order: Order) throws -> ProcessedOrder { fatalError("Not implemented") }`).
         - Empty class/struct/actor definitions with method signatures (e.g., `class UserService { getUsers(): User[] { throw new Error('Not implemented'); } }`, `class UserService { func getUsers() -> [User] { fatalError("Not implemented") } }`).
-        - Design for "Test-Friendly" Testability: If BDD scenarios involve async operations or state verification, design interfaces to support testing those behaviors
+        - Interface Design for Testability: If BDD scenarios involve async operations or state verification, design interfaces to support testing those behaviors
     - Test Infrastructure Organization Guidelines:
         - Colocation vs. Centralized: Decide if test-related files (mocks, helpers, fixtures) should live alongside the code they test (common in some JavaScript/React projects, e.g., `src/components/Button/__tests__/Button.test.tsx`, `src/components/Button/__mocks__/some-dependency.ts`) or in a centralized test directory (e.g., a top-level `tests/` or `AppNameTests/` directory). Prioritize your platform's idiomatic approach and team consistency.
         - Purpose-Driven Directories (if centralized): If using a central test directory, consider organizing subdirectories by their purpose to improve discoverability and maintainability. Common purposes include:
